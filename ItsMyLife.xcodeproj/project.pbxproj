@@ -11,15 +11,19 @@
 		B53C6DC91FAD89E90093FC52 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53C6DC81FAD89E90093FC52 /* ViewController.swift */; };
 		B53C6DCE1FAD89E90093FC52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B53C6DCD1FAD89E90093FC52 /* Assets.xcassets */; };
 		B53C6DD11FAD89E90093FC52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B53C6DCF1FAD89E90093FC52 /* LaunchScreen.storyboard */; };
+		C5A71C24DCC78C6C02631C04 /* Pods_ItsMyLife.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B46D1F2B4293F53BFB3127 /* Pods_ItsMyLife.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AFF78B13A34EEE2C7E7C38AD /* Pods-ItsMyLife.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ItsMyLife.release.xcconfig"; path = "Pods/Target Support Files/Pods-ItsMyLife/Pods-ItsMyLife.release.xcconfig"; sourceTree = "<group>"; };
 		B53C6DC31FAD89E90093FC52 /* ItsMyLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItsMyLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B53C6DC61FAD89E90093FC52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B53C6DC81FAD89E90093FC52 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B53C6DCD1FAD89E90093FC52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B53C6DD01FAD89E90093FC52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B53C6DD21FAD89E90093FC52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAB87F91A770EFE6B0BC3A4B /* Pods-ItsMyLife.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ItsMyLife.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ItsMyLife/Pods-ItsMyLife.debug.xcconfig"; sourceTree = "<group>"; };
+		F4B46D1F2B4293F53BFB3127 /* Pods_ItsMyLife.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ItsMyLife.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,17 +31,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5A71C24DCC78C6C02631C04 /* Pods_ItsMyLife.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F17D5BA807E3CF05D785CF4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EAB87F91A770EFE6B0BC3A4B /* Pods-ItsMyLife.debug.xcconfig */,
+				AFF78B13A34EEE2C7E7C38AD /* Pods-ItsMyLife.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9D6C7884EB021537AADFC4B1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F4B46D1F2B4293F53BFB3127 /* Pods_ItsMyLife.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B53C6DBA1FAD89E80093FC52 = {
 			isa = PBXGroup;
 			children = (
 				B53C6DC51FAD89E90093FC52 /* ItsMyLife */,
 				B53C6DC41FAD89E90093FC52 /* Products */,
+				5F17D5BA807E3CF05D785CF4 /* Pods */,
+				9D6C7884EB021537AADFC4B1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,9 +92,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B53C6DD51FAD89E90093FC52 /* Build configuration list for PBXNativeTarget "ItsMyLife" */;
 			buildPhases = (
+				CEA40494AA760987C73ECB4A /* [CP] Check Pods Manifest.lock */,
 				B53C6DBF1FAD89E80093FC52 /* Sources */,
 				B53C6DC01FAD89E80093FC52 /* Frameworks */,
 				B53C6DC11FAD89E80093FC52 /* Resources */,
+				EAD89A19EDDF26A741BC878A /* [CP] Embed Pods Frameworks */,
+				B7BA01AE31EB5F97F9EF7E52 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -126,6 +153,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B7BA01AE31EB5F97F9EF7E52 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ItsMyLife/Pods-ItsMyLife-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CEA40494AA760987C73ECB4A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ItsMyLife-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EAD89A19EDDF26A741BC878A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ItsMyLife/Pods-ItsMyLife-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ItsMyLife/Pods-ItsMyLife-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B53C6DBF1FAD89E80093FC52 /* Sources */ = {
@@ -260,11 +343,13 @@
 		};
 		B53C6DD61FAD89E90093FC52 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EAB87F91A770EFE6B0BC3A4B /* Pods-ItsMyLife.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 429BU58AR4;
 				INFOPLIST_FILE = ItsMyLife/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lobsterman.ItsMyLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -275,11 +360,13 @@
 		};
 		B53C6DD71FAD89E90093FC52 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AFF78B13A34EEE2C7E7C38AD /* Pods-ItsMyLife.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 429BU58AR4;
 				INFOPLIST_FILE = ItsMyLife/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lobsterman.ItsMyLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";

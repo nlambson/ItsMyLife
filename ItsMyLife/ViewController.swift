@@ -7,19 +7,26 @@
 //
 
 import UIKit
+import RealmSwift
 
-class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+// MARK: Model
+final class TaskList: Object {
+    @objc dynamic var text = ""
+    @objc dynamic var id = ""
+    let items = List<Task>()
+    
+    override static func primaryKey() -> String? {
+        return "id"
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
 
+final class Task: Object {
+    @objc dynamic var text = ""
+    @objc dynamic var completed = false
+}
+
+
+class ViewController: UITableViewController{
+
+}
