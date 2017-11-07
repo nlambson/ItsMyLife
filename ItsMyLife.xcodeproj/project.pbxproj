@@ -24,6 +24,11 @@
 		B50690BB1FB187F50062EF76 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		B50690BC1FB1880D0062EF76 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B50690BD1FB188180062EF76 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
+		B526EE8A1FB2245500E4C1E8 /* ItsMyLife-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ItsMyLife-Bridging-Header.h"; sourceTree = "<group>"; };
+		B526EE8B1FB2245600E4C1E8 /* ASValueTrackingSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASValueTrackingSlider.h; sourceTree = "<group>"; };
+		B526EE8C1FB2245600E4C1E8 /* ASValuePopUpView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASValuePopUpView.h; sourceTree = "<group>"; };
+		B526EE8D1FB2245600E4C1E8 /* ASValuePopUpView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASValuePopUpView.m; sourceTree = "<group>"; };
+		B526EE8E1FB2245600E4C1E8 /* ASValueTrackingSlider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASValueTrackingSlider.m; sourceTree = "<group>"; };
 		B53C6DC31FAD89E90093FC52 /* ItsMyLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItsMyLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B53C6DC61FAD89E90093FC52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B53C6DC81FAD89E90093FC52 /* TaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +77,26 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		B526EE851FB223F600E4C1E8 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				B526EE891FB2243500E4C1E8 /* ASValueTrackingSlider */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		B526EE891FB2243500E4C1E8 /* ASValueTrackingSlider */ = {
+			isa = PBXGroup;
+			children = (
+				B526EE8C1FB2245600E4C1E8 /* ASValuePopUpView.h */,
+				B526EE8D1FB2245600E4C1E8 /* ASValuePopUpView.m */,
+				B526EE8B1FB2245600E4C1E8 /* ASValueTrackingSlider.h */,
+				B526EE8E1FB2245600E4C1E8 /* ASValueTrackingSlider.m */,
+				B526EE8A1FB2245500E4C1E8 /* ItsMyLife-Bridging-Header.h */,
+			);
+			path = ASValueTrackingSlider;
+			sourceTree = "<group>";
+		};
 		B53C6DBA1FAD89E80093FC52 = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +118,7 @@
 		B53C6DC51FAD89E90093FC52 /* ItsMyLife */ = {
 			isa = PBXGroup;
 			children = (
+				B526EE851FB223F600E4C1E8 /* Libraries */,
 				B50690B91FB187E30062EF76 /* Model */,
 				B53C6DC61FAD89E90093FC52 /* AppDelegate.swift */,
 				B50690BC1FB1880D0062EF76 /* Main.storyboard */,
@@ -140,6 +166,7 @@
 				TargetAttributes = {
 					B53C6DC21FAD89E80093FC52 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -216,11 +243,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ItsMyLife/Pods-ItsMyLife-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ASValueTrackingSlider/ASValueTrackingSlider.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ASValueTrackingSlider.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 			);
@@ -370,6 +399,7 @@
 			baseConfigurationReference = EAB87F91A770EFE6B0BC3A4B /* Pods-ItsMyLife.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 429BU58AR4;
 				INFOPLIST_FILE = ItsMyLife/Info.plist;
@@ -377,6 +407,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lobsterman.ItsMyLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ItsMyLife/Libraries/ASValueTrackingSlider/ItsMyLife-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -387,6 +419,7 @@
 			baseConfigurationReference = AFF78B13A34EEE2C7E7C38AD /* Pods-ItsMyLife.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 429BU58AR4;
 				INFOPLIST_FILE = ItsMyLife/Info.plist;
@@ -394,6 +427,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lobsterman.ItsMyLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ItsMyLife/Libraries/ASValueTrackingSlider/ItsMyLife-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
