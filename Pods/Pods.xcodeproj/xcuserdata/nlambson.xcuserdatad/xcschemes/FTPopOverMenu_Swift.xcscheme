@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '9F510D2B6A00360BAB8430120448D98C'
-               BlueprintName = 'ASValueTrackingSlider'
+               BlueprintIdentifier = '45E5686CF543A4C478F57B2C88313189'
+               BlueprintName = 'FTPopOverMenu_Swift'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'ASValueTrackingSlider.framework'>
+               BuildableName = 'FTPopOverMenu_Swift.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

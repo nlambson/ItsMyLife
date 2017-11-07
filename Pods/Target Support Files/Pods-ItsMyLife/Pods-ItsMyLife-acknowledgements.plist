@@ -14,10 +14,9 @@
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>
-The MIT License (MIT)
+			<string>MIT License
 
-Copyright (c) 2013 Alan Skipp
+Copyright (c) 2016 Liu Fengting
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -40,7 +39,7 @@ SOFTWARE.
 			<key>License</key>
 			<string>MIT</string>
 			<key>Title</key>
-			<string>ASValueTrackingSlider</string>
+			<string>FTPopOverMenu_Swift</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>

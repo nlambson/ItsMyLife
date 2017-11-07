@@ -1,12 +1,11 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
-## ASValueTrackingSlider
+## FTPopOverMenu_Swift
 
+MIT License
 
-The MIT License (MIT)
-
-Copyright (c) 2013 Alan Skipp
+Copyright (c) 2016 Liu Fengting
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

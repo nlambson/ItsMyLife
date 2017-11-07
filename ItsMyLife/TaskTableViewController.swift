@@ -9,15 +9,46 @@
 import UIKit
 import RealmSwift
 
-class TaskTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    let emotions = ["😎","😀","😬","😐","🙁","😟","😔","😓","😰","😱"]
-    var lists : Results<TaskList>!
+class TaskTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ASValueTrackingSliderDataSource {
     
+    let emotions = ["😎","😀","😬","😐","🙁","😟","😔","😓","😰","😱"]
+    internal var stressLevel: Float = 0
+    @IBOutlet weak var stressLevelSlider: ASValueTrackingSlider!
+    
+    var lists : Results<TaskList>!
     var isEditingMode = false
     
     var currentCreateAction:UIAlertAction!
     @IBOutlet weak var taskListsTableView: UITableView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // For the extended navigation bar effect to work, a few changes
+        // must be made to the actual navigation bar.  Some of these changes could
+        // be applied in the storyboard but are made in code for clarity.
+        
+        // Translucency of the navigation bar is disabled so that it matches with
+        // the non-translucent background of the extension view.
+        navigationController!.navigationBar.isTranslucent = false
+        
+        // The navigation bar's shadowImage is set to a transparent image.  In
+        // addition to providing a custom background image, this removes
+        // the grey hairline at the bottom of the navigation bar.  The
+        // ExtendedNavBarView will draw its own hairline.
+        navigationController!.navigationBar.shadowImage = #imageLiteral(resourceName: "TransparentPixel")
+        // "Pixel" is a solid white 1x1 image.
+        navigationController!.navigationBar.setBackgroundImage(#imageLiteral(resourceName: "Pixel"), for: .default)
+        
+        
+        stressLevelSlider.dataSource = self
+        stressLevelSlider.setValue(stressLevel, animated: false)
+        stressLevelSlider.popUpViewCornerRadius = 12.0
+        stressLevelSlider.setMaxFractionDigitsDisplayed(0)
+        stressLevelSlider.font = UIFont.init(name: "GillSans-Bold", size: 28)
+        stressLevelSlider.popUpViewAnimatedColors = [UIColor.blue, UIColor.red]
+        stressLevelSlider.autoAdjustTrackColor = true
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         readTasksAndUpdateUI()
@@ -113,6 +144,16 @@ class TaskTableViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    // MARK: - ASValueTrackingSlider datasource
+    func slider(_ slider: ASValueTrackingSlider!, stringForValue value: Float) -> String! {
+        let value = Int(ceil(value))
+        
+        readTasksAndUpdateUI()
+        //TODO Nathan update this ^ to take the filter value from the slider
+        
+        return emotions[value]
     }
     
     // MARK: - UITableViewDataSource -

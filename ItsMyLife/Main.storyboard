@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,8 +23,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="c0u-O9-bSa" customClass="ASValueTrackingSlider">
+                                <rect key="frame" x="14" y="10" width="347" height="31"/>
+                            </slider>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wOK-UY-whH">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="603"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <segmentedControl key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" id="6ES-I7-lcz">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
@@ -70,10 +74,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="c0u-O9-bSa" secondAttribute="trailing" id="4Dd-wg-VA8"/>
                             <constraint firstItem="wOK-UY-whH" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="9xl-u4-ZNv"/>
+                            <constraint firstItem="c0u-O9-bSa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="NK7-MQ-TaE"/>
                             <constraint firstItem="wOK-UY-whH" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="NbC-Bu-91A"/>
                             <constraint firstItem="wOK-UY-whH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="SzD-ML-ba4"/>
-                            <constraint firstItem="wOK-UY-whH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="kJ4-cT-z2D"/>
+                            <constraint firstItem="wOK-UY-whH" firstAttribute="top" secondItem="c0u-O9-bSa" secondAttribute="bottom" constant="10" id="akW-fx-f4y"/>
+                            <constraint firstItem="c0u-O9-bSa" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="pfh-u0-UG5"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -90,13 +97,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="stressLevelSlider" destination="c0u-O9-bSa" id="gh3-rY-ZIy"/>
                         <outlet property="taskListsTableView" destination="wOK-UY-whH" id="hUq-Ay-Xdb"/>
                         <segue destination="9dS-Cc-Or1" kind="show" identifier="openTasks" id="hQa-g7-FkH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1269" y="362"/>
+            <point key="canvasLocation" x="1268" y="361.16941529235385"/>
         </scene>
         <!--Tasks View Controller-->
         <scene sceneID="oSE-6G-UZK">
