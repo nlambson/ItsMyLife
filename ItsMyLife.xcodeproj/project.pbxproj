@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B50690BE1FB188180062EF76 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50690BD1FB188180062EF76 /* TasksViewController.swift */; };
+		B50690BF1FB189F10062EF76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50690BC1FB1880D0062EF76 /* Main.storyboard */; };
+		B50690C01FB18AFB0062EF76 /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50690BA1FB187EE0062EF76 /* TaskList.swift */; };
+		B50690C11FB18AFE0062EF76 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50690BB1FB187F50062EF76 /* Task.swift */; };
 		B53C6DC71FAD89E90093FC52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53C6DC61FAD89E90093FC52 /* AppDelegate.swift */; };
 		B53C6DC91FAD89E90093FC52 /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53C6DC81FAD89E90093FC52 /* TaskTableViewController.swift */; };
 		B53C6DCE1FAD89E90093FC52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B53C6DCD1FAD89E90093FC52 /* Assets.xcassets */; };
@@ -16,6 +20,10 @@
 
 /* Begin PBXFileReference section */
 		AFF78B13A34EEE2C7E7C38AD /* Pods-ItsMyLife.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ItsMyLife.release.xcconfig"; path = "Pods/Target Support Files/Pods-ItsMyLife/Pods-ItsMyLife.release.xcconfig"; sourceTree = "<group>"; };
+		B50690BA1FB187EE0062EF76 /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
+		B50690BB1FB187F50062EF76 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		B50690BC1FB1880D0062EF76 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		B50690BD1FB188180062EF76 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		B53C6DC31FAD89E90093FC52 /* ItsMyLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItsMyLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B53C6DC61FAD89E90093FC52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B53C6DC81FAD89E90093FC52 /* TaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +63,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B50690B91FB187E30062EF76 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B50690BB1FB187F50062EF76 /* Task.swift */,
+				B50690BA1FB187EE0062EF76 /* TaskList.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		B53C6DBA1FAD89E80093FC52 = {
 			isa = PBXGroup;
 			children = (
@@ -76,8 +93,11 @@
 		B53C6DC51FAD89E90093FC52 /* ItsMyLife */ = {
 			isa = PBXGroup;
 			children = (
+				B50690B91FB187E30062EF76 /* Model */,
 				B53C6DC61FAD89E90093FC52 /* AppDelegate.swift */,
+				B50690BC1FB1880D0062EF76 /* Main.storyboard */,
 				B53C6DC81FAD89E90093FC52 /* TaskTableViewController.swift */,
+				B50690BD1FB188180062EF76 /* TasksViewController.swift */,
 				B53C6DCD1FAD89E90093FC52 /* Assets.xcassets */,
 				B53C6DCF1FAD89E90093FC52 /* LaunchScreen.storyboard */,
 				B53C6DD21FAD89E90093FC52 /* Info.plist */,
@@ -147,6 +167,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B50690BF1FB189F10062EF76 /* Main.storyboard in Resources */,
 				B53C6DD11FAD89E90093FC52 /* LaunchScreen.storyboard in Resources */,
 				B53C6DCE1FAD89E90093FC52 /* Assets.xcassets in Resources */,
 			);
@@ -215,8 +236,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B50690C01FB18AFB0062EF76 /* TaskList.swift in Sources */,
 				B53C6DC91FAD89E90093FC52 /* TaskTableViewController.swift in Sources */,
+				B50690C11FB18AFE0062EF76 /* Task.swift in Sources */,
 				B53C6DC71FAD89E90093FC52 /* AppDelegate.swift in Sources */,
+				B50690BE1FB188180062EF76 /* TasksViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
