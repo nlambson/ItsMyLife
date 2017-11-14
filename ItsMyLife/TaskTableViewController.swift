@@ -2,52 +2,58 @@
 //  TaskListsViewController.swift
 //  RealmTasks
 //
-//  Created by Hossam Ghareeb on 10/13/15.
-//  Copyright © 2015 Hossam Ghareeb. All rights reserved.
+//  Created by Nathan Lambson on 11/07/2017.
+//  Copyright (c) 2014 Alan Skipp. All rights reserved.
 //
 
 import UIKit
 import RealmSwift
+import FTPopOverMenu_Swift
 
 class TaskTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ASValueTrackingSliderDataSource {
+    @IBOutlet weak var stressSlider: ASValueTrackingSlider!
     
-    let emotions = ["😎","😀","😬","😐","🙁","😟","😔","😓","😰","😱"]
+    let emotions = ["😎","😁","😀","😐","🙁","😟","😔","😓","😰","😱"]
     internal var stressLevel: Float = 0
-    @IBOutlet weak var stressLevelSlider: ASValueTrackingSlider!
-    
+    var currentEmotionButton : UIButton?
     var lists : Results<TaskList>!
     var isEditingMode = false
+    
     
     var currentCreateAction:UIAlertAction!
     @IBOutlet weak var taskListsTableView: UITableView!
     
+    @objc func clickOnButton(button: UIButton) {
+        //Dont do anything right now
+    }
+    
+    func setButtonTitle(index: Int) {
+        if currentEmotionButton != nil {
+            currentEmotionButton?.setTitle(emotions[index], for: .normal)
+        } else {
+            currentEmotionButton = UIButton(type: .custom)
+            currentEmotionButton?.titleLabel?.font = UIFont.systemFont(ofSize: 30.0)
+            currentEmotionButton?.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+            currentEmotionButton?.setTitle(emotions[0], for: .normal)
+            currentEmotionButton?.addTarget(self, action: #selector(self.clickOnButton), for: .touchUpInside)
+            self.navigationItem.titleView = currentEmotionButton
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // For the extended navigation bar effect to work, a few changes
-        // must be made to the actual navigation bar.  Some of these changes could
-        // be applied in the storyboard but are made in code for clarity.
+        self.configureFTPopOverMenu()
+        self.setButtonTitle(index: 0)
         
-        // Translucency of the navigation bar is disabled so that it matches with
-        // the non-translucent background of the extension view.
-        navigationController!.navigationBar.isTranslucent = false
-        
-        // The navigation bar's shadowImage is set to a transparent image.  In
-        // addition to providing a custom background image, this removes
-        // the grey hairline at the bottom of the navigation bar.  The
-        // ExtendedNavBarView will draw its own hairline.
-        navigationController!.navigationBar.shadowImage = #imageLiteral(resourceName: "TransparentPixel")
-        // "Pixel" is a solid white 1x1 image.
-        navigationController!.navigationBar.setBackgroundImage(#imageLiteral(resourceName: "Pixel"), for: .default)
-        
-        
-        stressLevelSlider.dataSource = self
-        stressLevelSlider.setValue(stressLevel, animated: false)
-        stressLevelSlider.popUpViewCornerRadius = 12.0
-        stressLevelSlider.setMaxFractionDigitsDisplayed(0)
-        stressLevelSlider.font = UIFont.init(name: "GillSans-Bold", size: 28)
-        stressLevelSlider.popUpViewAnimatedColors = [UIColor.blue, UIColor.red]
-        stressLevelSlider.autoAdjustTrackColor = true
+        stressSlider.dataSource = self
+        stressSlider.setValue(stressLevel, animated: false)
+        stressSlider.popUpViewCornerRadius = 12.0
+        stressSlider.setMaxFractionDigitsDisplayed(0)
+        stressSlider.font = UIFont.init(name: "GillSans-Bold", size: 28)
+        stressSlider.popUpViewAnimatedColors = [UIColor.blue, UIColor.red]
+        stressSlider.autoAdjustTrackColor = true
+        stressSlider.minimumTrackTintColor = UIColor.white
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,15 +61,13 @@ class TaskTableViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func readTasksAndUpdateUI(){
-        
         lists = uiRealm.objects(TaskList.self)
         self.taskListsTableView.setEditing(false, animated: true)
         self.taskListsTableView.reloadData()
     }
     
     // MARK: - User Actions -
-    
-    
+
     @IBAction func didSelectSortCriteria(_ sender: UISegmentedControl) {
         
         if sender.selectedSegmentIndex == 0{
@@ -84,7 +88,6 @@ class TaskTableViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @IBAction func didClickOnAddButton(_ sender: UIBarButtonItem) {
-        
         displayAlertToAddTaskList(nil)
     }
     
@@ -115,7 +118,6 @@ class TaskTableViewController: UIViewController, UITableViewDelegate, UITableVie
                 }
             }
             else{
-                
                 let newTaskList = TaskList()
                 newTaskList.name = listName!
                 
@@ -146,13 +148,46 @@ class TaskTableViewController: UIViewController, UITableViewDelegate, UITableVie
         self.present(alertController, animated: true, completion: nil)
     }
     
+    // MARK: - FTPopOverMenu
+    
+    func configureFTPopOverMenu() {
+        let configuration = FTConfiguration.shared
+        configuration.menuRowHeight = 40.0
+        configuration.menuWidth = 40.0
+        configuration.textFont = UIFont.systemFont(ofSize: 25.0)
+        configuration.textAlignment = NSTextAlignment.center
+    }
+    
     // MARK: - ASValueTrackingSlider datasource
+    
+    @objc func onSliderValueChanged(slider: UISlider, event: UIEvent) {
+        if let touchEvent = event.allTouches?.first {
+            switch touchEvent.phase {
+            case .began:
+                print("began")
+                break
+            // handle drag began
+            case .moved:
+                print("moved")
+                break
+            // handle drag moved
+            case .ended:
+                print("ended")
+                break
+            // handle drag ended
+            default:
+                break
+            }
+        }
+    }
+    
     func slider(_ slider: ASValueTrackingSlider!, stringForValue value: Float) -> String! {
         let value = Int(ceil(value))
-        
+
         readTasksAndUpdateUI()
+        setButtonTitle(index: value)
         //TODO Nathan update this ^ to take the filter value from the slider
-        
+
         return emotions[value]
     }
     

@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Task Lists-->
+        <!--Task Table View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="TaskTableViewController" customModule="ItsMyLife" customModuleProvider="target" sceneMemberID="viewController">
@@ -23,11 +23,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="c0u-O9-bSa" customClass="ASValueTrackingSlider">
-                                <rect key="frame" x="14" y="10" width="347" height="31"/>
-                            </slider>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wOK-UY-whH">
-                                <rect key="frame" x="0.0" y="50" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <segmentedControl key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" id="6ES-I7-lcz">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
@@ -71,21 +68,25 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="idT-pU-5yf"/>
                                 </connections>
                             </tableView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="9" translatesAutoresizingMaskIntoConstraints="NO" id="NCy-8O-ETU" customClass="ASValueTrackingSlider">
+                                <rect key="frame" x="24" y="553" width="327" height="31"/>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="c0u-O9-bSa" secondAttribute="trailing" id="4Dd-wg-VA8"/>
-                            <constraint firstItem="wOK-UY-whH" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="9xl-u4-ZNv"/>
-                            <constraint firstItem="c0u-O9-bSa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="NK7-MQ-TaE"/>
                             <constraint firstItem="wOK-UY-whH" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="NbC-Bu-91A"/>
                             <constraint firstItem="wOK-UY-whH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="SzD-ML-ba4"/>
-                            <constraint firstItem="wOK-UY-whH" firstAttribute="top" secondItem="c0u-O9-bSa" secondAttribute="bottom" constant="10" id="akW-fx-f4y"/>
-                            <constraint firstItem="c0u-O9-bSa" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="pfh-u0-UG5"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="NCy-8O-ETU" secondAttribute="bottom" constant="20" id="aL4-N0-oan"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NCy-8O-ETU" secondAttribute="trailing" constant="10" id="eya-Hk-KEI"/>
+                            <constraint firstItem="wOK-UY-whH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="kJ4-cT-z2D"/>
+                            <constraint firstItem="NCy-8O-ETU" firstAttribute="top" secondItem="wOK-UY-whH" secondAttribute="bottom" constant="10" id="uE0-GG-fF9"/>
+                            <constraint firstItem="NCy-8O-ETU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="ub1-mf-bhG"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="Task Lists" id="OU1-aT-D5r">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="Mb9-2Z-FWY">
+                    <navigationItem key="navigationItem" id="OU1-aT-D5r">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" springLoaded="YES" style="plain" systemItem="edit" id="Mb9-2Z-FWY">
                             <connections>
                                 <action selector="didClickOnEditButton:" destination="BYZ-38-t0r" id="LPk-Bx-zDM"/>
                             </connections>
@@ -97,14 +98,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="stressLevelSlider" destination="c0u-O9-bSa" id="gh3-rY-ZIy"/>
+                        <outlet property="stressSlider" destination="NCy-8O-ETU" id="yav-VK-GhX"/>
                         <outlet property="taskListsTableView" destination="wOK-UY-whH" id="hUq-Ay-Xdb"/>
                         <segue destination="9dS-Cc-Or1" kind="show" identifier="openTasks" id="hQa-g7-FkH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1268" y="361.16941529235385"/>
+            <point key="canvasLocation" x="1305" y="-331"/>
         </scene>
         <!--Tasks View Controller-->
         <scene sceneID="oSE-6G-UZK">
@@ -175,7 +176,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wdC-nm-wka" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2043" y="362"/>
+            <point key="canvasLocation" x="2138" y="-331"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PcW-N4-rKi">

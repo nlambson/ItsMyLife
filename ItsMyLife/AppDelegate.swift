@@ -1,9 +1,9 @@
-//
+d//
 //  AppDelegate.swift
 //  RealmTasks
 //
-//  Created by Hossam Ghareeb on 10/12/15.
-//  Copyright © 2015 Hossam Ghareeb. All rights reserved.
+//  Created by Nathan Lambson on 11/07/2017.
+//  Copyright (c) 2014 Alan Skipp. All rights reserved.
 //
 
 import UIKit

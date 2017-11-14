@@ -1,4 +1,5 @@
 PODS:
+  - ASValueTrackingSlider (0.12.1)
   - FTPopOverMenu_Swift (0.0.9)
   - Realm (3.0.1):
     - Realm/Headers (= 3.0.1)
@@ -7,14 +8,16 @@ PODS:
     - Realm (= 3.0.1)
 
 DEPENDENCIES:
+  - ASValueTrackingSlider (~> 0.12)
   - FTPopOverMenu_Swift (~> 0.0)
   - RealmSwift (~> 3.0)
 
 SPEC CHECKSUMS:
+  ASValueTrackingSlider: 5261de3fcf00adb339efc93885e8f0bc99e703cd
   FTPopOverMenu_Swift: 3c1c01a5005a06230ea4b7b9f4a96300f5748bd7
   Realm: ba6144c74f835f7497791f6599d63a7755377b83
   RealmSwift: 7d13b1ac4b6022a13f841e3143e7789c9e40ad0d
 
-PODFILE CHECKSUM: 787b8647fa6bb2d7b9c8959f811d78a2bd7dd436
+PODFILE CHECKSUM: 9248e0a53a34446ab71a18a2bfa80e1b0c4dce54
 
 COCOAPODS: 1.3.1

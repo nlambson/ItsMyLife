@@ -5,6 +5,7 @@ target 'ItsMyLife' do
   use_frameworks!
   pod 'RealmSwift', '~> 3.0'
   pod 'FTPopOverMenu_Swift', '~> 0.0'
+  pod 'ASValueTrackingSlider', '~> 0.12'
 end
 
 
