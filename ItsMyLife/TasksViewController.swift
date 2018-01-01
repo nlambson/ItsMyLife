@@ -1,13 +1,12 @@
 //
 //  TasksViewController.swift
-//  RealmTasks
+//  ItsMyLife
 //
 //  Created by Nathan Lambson on 11/07/2017.
-//  Copyright (c) 2014 Alan Skipp. All rights reserved.
+//  Copyright (c) 2017 Nathan Lambson. All rights reserved.
 //
 
 import UIKit
-import RealmSwift
 // FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
 // Consider refactoring the code to use the non-optional operators.
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
@@ -34,9 +33,8 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 
 class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var selectedList : TaskList!
-    var openTasks : Results<Task>!
-    var completedTasks : Results<Task>!
+//    var openTasks : Results<Task>!
+//    var completedTasks : Results<Task>!
     var currentCreateAction:UIAlertAction!
     
     var isEditingMode = false
@@ -45,7 +43,8 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = selectedList.name
+        self.title = "TASKS"
+//        self.title = selectedList.name
         readTasksAndUpateUI()
     }
     
@@ -55,13 +54,14 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         isEditingMode = !isEditingMode
         self.tasksTableView.setEditing(isEditingMode, animated: true)
     }
+    
     @IBAction func didClickOnNewTask(_ sender: AnyObject) {
         self.displayAlertToAddTask(nil)
     }
+    
     func readTasksAndUpateUI(){
-        
-        completedTasks = self.selectedList.tasks.filter("isCompleted = true")
-        openTasks = self.selectedList.tasks.filter("isCompleted = false")
+//        completedTasks = self.selectedList.tasks.filter("isCompleted = true")
+//        openTasks = self.selectedList.tasks.filter("isCompleted = false")
         
         self.tasksTableView.reloadData()
     }
@@ -70,12 +70,16 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
-            return openTasks.count
+            return 2
+//            return openTasks.count
         }
-        return completedTasks.count
+        return 5 //cuz why not
+//        return completedTasks.count
     }
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         if section == 0{
@@ -84,22 +88,21 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return "COMPLETED TASKS"
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
         var task: Task!
         if indexPath.section == 0{
-            task = openTasks[indexPath.row]
+//            task = openTasks[indexPath.row]
         }
         else{
-            task = completedTasks[indexPath.row]
+//            task = completedTasks[indexPath.row]
         }
         
         cell?.textLabel?.text = task.name
         return cell!
     }
     
-    
-    func displayAlertToAddTask(_ updatedTask:Task!){
+    func displayAlertToAddTask(_ updatedTask:Task!) {
         
         var title = "New Task"
         var doneTitle = "Create"
@@ -113,23 +116,31 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             let taskName = alertController.textFields?.first?.text
             
-            if updatedTask != nil{
-                // update mode
-                try! uiRealm.write{
-                    updatedTask.name = taskName!
-                    self.readTasksAndUpateUI()
+            var taskPriority = 0
+            if let priorityTextfield = alertController.textFields?[1] {
+                if let priorityText = priorityTextfield.text {
+                    taskPriority = Int(priorityText)!
                 }
             }
-            else{
+            
+            if updatedTask != nil{
+                // update mode
+//                try! uiRealm.write{
+//                    updatedTask.name = taskName!
+//                    updatedTask.priority = taskPriority
+//                    self.readTasksAndUpateUI()
+//                }
                 
+            } else {
                 let newTask = Task()
                 newTask.name = taskName!
+                newTask.priority = Double(taskPriority)
                 
-                try! uiRealm.write{
-                    
-                    self.selectedList.tasks.append(newTask)
-                    self.readTasksAndUpateUI()
-                }
+//                try! uiRealm.write{
+//
+//                    self.selectedList.tasks.append(newTask)
+//                    self.readTasksAndUpateUI()
+//                }
             }
             
             print(taskName ?? "")
@@ -149,6 +160,14 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         }
         
+        alertController.addTextField { (textField) -> Void in
+            textField.placeholder = "Priority 0 - 10"
+            textField.addTarget(self, action: #selector(TasksViewController.priorityFieldDidChange(_:)) , for: UIControlEvents.editingChanged)
+            if updatedTask != nil{
+                textField.text = String(updatedTask.priority)
+            }
+        }
+        
         self.present(alertController, animated: true, completion: nil)
     }
 
@@ -157,37 +176,53 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.currentCreateAction.isEnabled = textField.text?.characters.count > 0
     }
     
+    @objc func priorityFieldDidChange(_ textField:UITextField) {
+        guard let text = textField.text else {
+            self.currentCreateAction.isEnabled = false
+            return
+        }
+        
+        var isEnabled = text.characters.count > 0
+        
+        if isEnabled {
+            if let number = Int(text) {
+                isEnabled = 0...10 ~= number
+            }
+        }
+        
+        self.currentCreateAction.isEnabled = isEnabled
+        
+    }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (deleteAction, indexPath) -> Void in
-            
             //Deletion will go here
             
             var taskToBeDeleted: Task!
             if indexPath.section == 0{
-                taskToBeDeleted = self.openTasks[indexPath.row]
+//                taskToBeDeleted = self.openTasks[indexPath.row]
             }
             else{
-                taskToBeDeleted = self.completedTasks[indexPath.row]
+//                taskToBeDeleted = self.completedTasks[indexPath.row]
             }
             
-            try! uiRealm.write{
-                uiRealm.delete(taskToBeDeleted)
-                self.readTasksAndUpateUI()
-            }
+//            try! uiRealm.write{
+//                uiRealm.delete(taskToBeDeleted)
+//                self.readTasksAndUpateUI()
+//            }
         }
+        
         let editAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "Edit") { (editAction, indexPath) -> Void in
-            
             // Editing will go here
             var taskToBeUpdated: Task!
             if indexPath.section == 0{
-                taskToBeUpdated = self.openTasks[indexPath.row]
-            }
-            else{
-                taskToBeUpdated = self.completedTasks[indexPath.row]
+//                taskToBeUpdated = self.openTasks[indexPath.row]
+//            }
+            } else {
+//                taskToBeUpdated = self.completedTasks[indexPath.row]
             }
             
-            self.displayAlertToAddTask(taskToBeUpdated)
+//            self.displayAlertToAddTask(taskToBeUpdated)
             
         }
         
@@ -195,17 +230,17 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
             // Editing will go here
             var taskToBeUpdated: Task!
             if indexPath.section == 0{
-                taskToBeUpdated = self.openTasks[indexPath.row]
+//                taskToBeUpdated = self.openTasks[indexPath.row]
+            } else {
+//                taskToBeUpdated = self.completedTasks[indexPath.row]
             }
-            else{
-                taskToBeUpdated = self.completedTasks[indexPath.row]
-            }
-            try! uiRealm.write{
-                taskToBeUpdated.isCompleted = true
-                self.readTasksAndUpateUI()
-            }
+//            try! uiRealm.write{
+//                taskToBeUpdated.isCompleted = true
+//                self.readTasksAndUpateUI()
+//            }
             
         }
+        
         return [deleteAction, editAction, doneAction]
     }
 

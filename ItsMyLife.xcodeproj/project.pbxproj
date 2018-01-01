@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		B50690BE1FB188180062EF76 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50690BD1FB188180062EF76 /* TasksViewController.swift */; };
 		B50690BF1FB189F10062EF76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50690BC1FB1880D0062EF76 /* Main.storyboard */; };
-		B50690C01FB18AFB0062EF76 /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50690BA1FB187EE0062EF76 /* TaskList.swift */; };
-		B50690C11FB18AFE0062EF76 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50690BB1FB187F50062EF76 /* Task.swift */; };
+		B512BD541FE3872300E941F7 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B512BD521FE3872300E941F7 /* CoreDataStack.swift */; };
+		B512BD551FE3872300E941F7 /* CommonCoreDataQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = B512BD531FE3872300E941F7 /* CommonCoreDataQueries.swift */; };
+		B512BD581FE3883C00E941F7 /* ItsMyLife.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B512BD561FE3883C00E941F7 /* ItsMyLife.xcdatamodeld */; };
 		B53C6DC71FAD89E90093FC52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53C6DC61FAD89E90093FC52 /* AppDelegate.swift */; };
 		B53C6DC91FAD89E90093FC52 /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53C6DC81FAD89E90093FC52 /* TaskTableViewController.swift */; };
 		B53C6DCE1FAD89E90093FC52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B53C6DCD1FAD89E90093FC52 /* Assets.xcassets */; };
@@ -20,10 +21,11 @@
 
 /* Begin PBXFileReference section */
 		AFF78B13A34EEE2C7E7C38AD /* Pods-ItsMyLife.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ItsMyLife.release.xcconfig"; path = "Pods/Target Support Files/Pods-ItsMyLife/Pods-ItsMyLife.release.xcconfig"; sourceTree = "<group>"; };
-		B50690BA1FB187EE0062EF76 /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
-		B50690BB1FB187F50062EF76 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		B50690BC1FB1880D0062EF76 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B50690BD1FB188180062EF76 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
+		B512BD521FE3872300E941F7 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		B512BD531FE3872300E941F7 /* CommonCoreDataQueries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonCoreDataQueries.swift; sourceTree = "<group>"; };
+		B512BD571FE3883C00E941F7 /* ItsMyLife.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ItsMyLife.xcdatamodel; sourceTree = "<group>"; };
 		B526EE8A1FB2245500E4C1E8 /* ItsMyLife-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ItsMyLife-Bridging-Header.h"; sourceTree = "<group>"; };
 		B526EE8B1FB2245600E4C1E8 /* ASValueTrackingSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASValueTrackingSlider.h; sourceTree = "<group>"; };
 		B526EE8C1FB2245600E4C1E8 /* ASValuePopUpView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASValuePopUpView.h; sourceTree = "<group>"; };
@@ -71,10 +73,18 @@
 		B50690B91FB187E30062EF76 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B50690BB1FB187F50062EF76 /* Task.swift */,
-				B50690BA1FB187EE0062EF76 /* TaskList.swift */,
+				B512BD561FE3883C00E941F7 /* ItsMyLife.xcdatamodeld */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B512BD511FE3871B00E941F7 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				B512BD521FE3872300E941F7 /* CoreDataStack.swift */,
+				B512BD531FE3872300E941F7 /* CommonCoreDataQueries.swift */,
+			);
+			path = "Core Data";
 			sourceTree = "<group>";
 		};
 		B526EE851FB223F600E4C1E8 /* Libraries */ = {
@@ -118,6 +128,7 @@
 		B53C6DC51FAD89E90093FC52 /* ItsMyLife */ = {
 			isa = PBXGroup;
 			children = (
+				B512BD511FE3871B00E941F7 /* Core Data */,
 				B526EE851FB223F600E4C1E8 /* Libraries */,
 				B50690B91FB187E30062EF76 /* Model */,
 				B53C6DC61FAD89E90093FC52 /* AppDelegate.swift */,
@@ -245,15 +256,11 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-ItsMyLife/Pods-ItsMyLife-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ASValueTrackingSlider/ASValueTrackingSlider.framework",
 				"${BUILT_PRODUCTS_DIR}/FTPopOverMenu_Swift/FTPopOverMenu_Swift.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ASValueTrackingSlider.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FTPopOverMenu_Swift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -267,9 +274,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B50690C01FB18AFB0062EF76 /* TaskList.swift in Sources */,
+				B512BD551FE3872300E941F7 /* CommonCoreDataQueries.swift in Sources */,
 				B53C6DC91FAD89E90093FC52 /* TaskTableViewController.swift in Sources */,
-				B50690C11FB18AFE0062EF76 /* Task.swift in Sources */,
+				B512BD581FE3883C00E941F7 /* ItsMyLife.xcdatamodeld in Sources */,
+				B512BD541FE3872300E941F7 /* CoreDataStack.swift in Sources */,
 				B53C6DC71FAD89E90093FC52 /* AppDelegate.swift in Sources */,
 				B50690BE1FB188180062EF76 /* TasksViewController.swift in Sources */,
 			);
@@ -405,7 +413,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 429BU58AR4;
 				INFOPLIST_FILE = ItsMyLife/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lobsterman.ItsMyLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -425,7 +433,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 429BU58AR4;
 				INFOPLIST_FILE = ItsMyLife/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lobsterman.ItsMyLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -457,6 +465,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B512BD561FE3883C00E941F7 /* ItsMyLife.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B512BD571FE3883C00E941F7 /* ItsMyLife.xcdatamodel */,
+			);
+			currentVersion = B512BD571FE3883C00E941F7 /* ItsMyLife.xcdatamodel */;
+			path = ItsMyLife.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B53C6DBB1FAD89E80093FC52 /* Project object */;
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RSh-4w-lZ1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RSh-4w-lZ1">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,22 +24,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wOK-UY-whH">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <segmentedControl key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" id="6ES-I7-lcz">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <segments>
-                                        <segment title="A-Z"/>
-                                        <segment title="Date"/>
-                                    </segments>
-                                    <connections>
-                                        <action selector="didSelectSortCriteria:" destination="BYZ-38-t0r" eventType="valueChanged" id="ekX-So-HbG"/>
-                                    </connections>
-                                </segmentedControl>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="533"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="listCell" textLabel="kb7-VB-BKD" detailTextLabel="9Uz-YA-bgF" style="IBUITableViewCellStyleValue1" id="qiM-4j-h6O">
-                                        <rect key="frame" x="0.0" y="58" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qiM-4j-h6O" id="bhU-Yj-qBb">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -74,38 +63,25 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="wOK-UY-whH" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="NbC-Bu-91A"/>
-                            <constraint firstItem="wOK-UY-whH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="SzD-ML-ba4"/>
+                            <constraint firstAttribute="trailing" secondItem="wOK-UY-whH" secondAttribute="trailing" id="MQC-Yr-tP9"/>
+                            <constraint firstItem="wOK-UY-whH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Ydj-GF-5ey"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="NCy-8O-ETU" secondAttribute="bottom" constant="20" id="aL4-N0-oan"/>
                             <constraint firstAttribute="trailingMargin" secondItem="NCy-8O-ETU" secondAttribute="trailing" constant="10" id="eya-Hk-KEI"/>
-                            <constraint firstItem="wOK-UY-whH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="kJ4-cT-z2D"/>
-                            <constraint firstItem="NCy-8O-ETU" firstAttribute="top" secondItem="wOK-UY-whH" secondAttribute="bottom" constant="10" id="uE0-GG-fF9"/>
+                            <constraint firstItem="NCy-8O-ETU" firstAttribute="top" secondItem="wOK-UY-whH" secondAttribute="bottom" constant="20" id="h3j-2C-qxo"/>
+                            <constraint firstItem="wOK-UY-whH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nwZ-eE-oP1"/>
                             <constraint firstItem="NCy-8O-ETU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="ub1-mf-bhG"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" id="OU1-aT-D5r">
-                        <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" springLoaded="YES" style="plain" systemItem="edit" id="Mb9-2Z-FWY">
-                            <connections>
-                                <action selector="didClickOnEditButton:" destination="BYZ-38-t0r" id="LPk-Bx-zDM"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="xjP-rd-UBy">
-                            <connections>
-                                <action selector="didClickOnAddButton:" destination="BYZ-38-t0r" id="J5g-bl-Fei"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="OU1-aT-D5r"/>
                     <connections>
                         <outlet property="stressSlider" destination="NCy-8O-ETU" id="yav-VK-GhX"/>
-                        <outlet property="taskListsTableView" destination="wOK-UY-whH" id="hUq-Ay-Xdb"/>
-                        <segue destination="9dS-Cc-Or1" kind="show" identifier="openTasks" id="hQa-g7-FkH"/>
+                        <outlet property="tasksTableView" destination="wOK-UY-whH" id="F6s-Ri-OhS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1305" y="-331"/>
+            <point key="canvasLocation" x="1304.8" y="-331.48425787106447"/>
         </scene>
         <!--Tasks View Controller-->
         <scene sceneID="oSE-6G-UZK">
@@ -116,11 +92,11 @@
                         <viewControllerLayoutGuide type="bottom" id="OEj-A7-OTb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="iKy-hg-CN5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="B8B-v7-wJH">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="Af1-Ur-DdV" style="IBUITableViewCellStyleDefault" id="Wk6-nn-thd">
@@ -186,6 +162,16 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ur5-p8-9aH">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="36"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
